@@ -1,5 +1,5 @@
 #CarWash-Project<br> <br>
-I have made this project CarWash.<br><br>
+I have made this CarWash Project.<br><br>
 ===============technology===============
 <br><br>
 language - Spring Boot MVC, JdbcTemplate, jsp file <br>
