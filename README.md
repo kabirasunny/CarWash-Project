@@ -2,7 +2,7 @@
 I have made this CarWash Project.<br><br>
 ===============technology===============
 <br><br>
-language - Spring Boot MVC, JdbcTemplate, jsp file <br>
+language - Spring Boot MVC, JdbcTemplate <br>
 Web tech - HTML, CSS, JS <br>
 Tools - Spring Tool Suit-4 , MySQL Workbench - 8.0.37 <br><br>
 ===============Database===============
