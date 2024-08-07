@@ -44,7 +44,7 @@ public class CarWashDao {
 	
 	public int setBooking(Booking book) {
 		String query = "insert into carbooking(phonenumber,waterwash,farmwash,voccumcleaner,pollish,aircleaner,dateandtime) values(?,?,?,?,?,?,?)";
-		int result = this.jdbcTemplate.update(query,book.getPhoneNumber(), book.getWaterWash(), book.getFarmWash(), book.getVoccumCleaner(), book.getPollish(), book.getAirCleaner(),book.getDateAndTime());
+		int result = this.jdbcTemplate.update(query,book.getPhoneNumber(), book.getWaterWash(), book.getFarmWash(), book.getVocuumCleaner(), book.getPollish(), book.getAirCleaner(),book.getDateAndTime());
 		return result;
 	}
 	
