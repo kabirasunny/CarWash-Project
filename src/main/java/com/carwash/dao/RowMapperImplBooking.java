@@ -14,7 +14,7 @@ public class RowMapperImplBooking implements RowMapper<Booking> {
 		book.setPhoneNumber(rs.getString(1));
 		book.setWaterWash(rs.getString(2));
 		book.setFarmWash(rs.getString(3));
-		book.setVoccumCleaner(rs.getString(4));
+		book.setVocuumCleaner(rs.getString(4));
 		book.setPollish(rs.getString(5));
 		book.setAirCleaner(rs.getString(6));
 		book.setDateAndTime(rs.getString(7));
