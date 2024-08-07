@@ -73,24 +73,35 @@ public class CarWashController {
 	public String getRegister(@Valid @ModelAttribute("carWash") CarWash carWash, BindingResult result, Model m,
 			HttpSession session) {
 
-		if (result.hasErrors()) {
-			return "signup";
-
-		}
-
-		else {
-			carWash.getPhoneNumber();
-			carWash.getEmail();
-			carWash.getFullname();
-			carWash.getPassword();
-			int r = carWashDao.getRegister(carWash);
-			if (r == 1) {
-				return "success";
-			} else {
+		try {
+			if (result.hasErrors()) {
 				return "signup";
+
 			}
 
+			else {
+				carWash.getPhoneNumber();
+				carWash.getEmail();
+				carWash.getFullname();
+				carWash.getPassword();
+				int r = carWashDao.getRegister(carWash);
+				if (r == 1) {
+					return "success";
+				} else {
+					return "signup";
+				}
+
+			}
+		} catch (DuplicateKeyException e) {
+			m.addAttribute("number",carWash.getPhoneNumber());
+			m.addAttribute("showMsg","block");
+			m.addAttribute("numText", "Phone number is already registerd !!");
+			m.addAttribute("email",carWash.getEmail());
+			m.addAttribute("name",carWash.getFullname());
+			m.addAttribute("password",carWash.getPassword());
+			return "signup";
 		}
+
 	}
 
 	@GetMapping("/login")
