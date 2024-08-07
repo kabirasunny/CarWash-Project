@@ -5,6 +5,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -101,7 +103,6 @@ public class CarWashController {
 			m.addAttribute("password",carWash.getPassword());
 			return "signup";
 		}
-
 	}
 
 	@GetMapping("/login")
@@ -173,9 +174,9 @@ public class CarWashController {
 		book.setPhoneNumber(number);
 		book.setWaterWash("Yes");
 		book.setFarmWash("No");
-		book.setVoccumCleaner("No");
+		book.setVocuumCleaner("No");
 		book.setPollish("No");
-		book.setVoccumCleaner("No");
+		book.setVocuumCleaner("No");
 		book.setAirCleaner("No");
 		book.setDateAndTime(formatDateTime);
 
@@ -195,13 +196,13 @@ public class CarWashController {
 		book.setPhoneNumber(number);
 		book.setWaterWash("Yes");
 		book.setFarmWash("Yes");
-		book.setVoccumCleaner("Yes");
+		book.setVocuumCleaner("Yes");
 		book.setPollish("No");
-		book.setVoccumCleaner("No");
+		book.setVocuumCleaner("No");
 		book.setAirCleaner("No");
 		book.setDateAndTime(formatDateTime);
 		int result = this.carWashService.setBooking(book);
-		return "normal";
+		return "medium";
 	}
 
 	@GetMapping("/premium")
@@ -211,22 +212,20 @@ public class CarWashController {
 		LocalDateTime now = LocalDateTime.now();
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 		String formatDateTime = now.format(format);
-
 		String number = this.number;
 		book.setPhoneNumber(number);
 		book.setWaterWash("Yes");
 		book.setFarmWash("Yes");
-		book.setVoccumCleaner("Yes");
+		book.setVocuumCleaner("Yes");
 		book.setPollish("Yes");
-		book.setVoccumCleaner("Yes");
+		book.setVocuumCleaner("Yes");
 		book.setAirCleaner("Yes");
 		book.setDateAndTime(formatDateTime);
 		int result = this.carWashService.setBooking(book);
-		return "normal";
+		return "premium";
 	}
 
-	// ===============car booking get
-	// process============================================
+	// ===============car booking get process========================
 
 	@GetMapping("/cardetail")
 	public String getNormal(Model m) {
@@ -234,13 +233,13 @@ public class CarWashController {
 		String number = this.number;
 		List<Booking> list = this.carWashService.getBooking(number);
 		for (Booking b : list) {
-			m.addAttribute("number", b.getPhoneNumber());
-			m.addAttribute("waterwash", b.getWaterWash());
-			m.addAttribute("farmwash", b.getFarmWash());
-			m.addAttribute("voccum", b.getVoccumCleaner());
-			m.addAttribute("pollish", b.getPollish());
-			m.addAttribute("aircleaner", b.getAirCleaner());
-			m.addAttribute("dateandtime", b.getDateAndTime());
+				m.addAttribute("number", b.getPhoneNumber());
+				m.addAttribute("waterwash", b.getWaterWash());
+				m.addAttribute("farmwash", b.getFarmWash());
+				m.addAttribute("vocuum", b.getVocuumCleaner());
+				m.addAttribute("pollish", b.getPollish());
+				m.addAttribute("aircleaner", b.getAirCleaner());
+				m.addAttribute("dateandtime", b.getDateAndTime());
 		}
 		return "booking";
 	}
@@ -254,7 +253,7 @@ public class CarWashController {
 			m.addAttribute("number", b.getPhoneNumber());
 			m.addAttribute("waterwash", b.getWaterWash());
 			m.addAttribute("farmwash", b.getFarmWash());
-			m.addAttribute("voccum", b.getVoccumCleaner());
+			m.addAttribute("voccum", b.getVocuumCleaner());
 			m.addAttribute("pollish", b.getPollish());
 			m.addAttribute("aircleaner", b.getAirCleaner());
 			m.addAttribute("dateandtime", b.getDateAndTime());
@@ -271,7 +270,7 @@ public class CarWashController {
 			m.addAttribute("number", b.getPhoneNumber());
 			m.addAttribute("waterwash", b.getWaterWash());
 			m.addAttribute("farmwash", b.getFarmWash());
-			m.addAttribute("voccum", b.getVoccumCleaner());
+			m.addAttribute("voccum", b.getVocuumCleaner());
 			m.addAttribute("pollish", b.getPollish());
 			m.addAttribute("aircleaner", b.getAirCleaner());
 			m.addAttribute("dateandtime", b.getDateAndTime());
@@ -279,7 +278,7 @@ public class CarWashController {
 		return "booking";
 	}
 
-//	=========================logout=================================================
+//	=========================logout==============================
 	@GetMapping("/logout")
 	public String logOut() {
 
@@ -288,7 +287,7 @@ public class CarWashController {
 
 	}
 
-//	====================================reset password===============================
+//	====================reset password=============================
 	@GetMapping("/resetpassword")
 	public String passwordPage() {
 		return "resetpassword";
@@ -296,14 +295,22 @@ public class CarWashController {
 
 	@PostMapping(path = "/reset")
 	public String getPassword(@RequestParam("phoneNumber") String number, Model m) {
-		CarWash carWash = this.carWashService.getPassword(number);
-		if (carWash != null) {
-			this.number = number;
-			m.addAttribute("number", this.number);
-			return "submitpassword";
-		} else {
+		try {
+			CarWash carWash = this.carWashService.getPassword(number);
+			if (carWash != null) {
+				this.number = number;
+				m.addAttribute("number", this.number);
+				return "submitpassword";
+			} else {
+				return "resetpassword";
+			}
+		} catch (EmptyResultDataAccessException e) {
+			m.addAttribute("number", number);
+			m.addAttribute("showMsg","block");
+			m.addAttribute("numText", "Please enter a valid number !!");
 			return "resetpassword";
 		}
+
 	}
 
 	@PostMapping("/submitpassword")
