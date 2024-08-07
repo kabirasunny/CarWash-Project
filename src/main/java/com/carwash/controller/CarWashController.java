@@ -112,25 +112,33 @@ public class CarWashController {
 	@PostMapping(path = "/loginuser")
 	public String getLogin(@RequestParam("phoneNumber") String number, @RequestParam("password") String password,
 			Model m, RedirectAttributes attrs, HttpSession session) {
-		CarWash carWash = carWashService.getLogin(number);
+		try {
+			CarWash carWash = carWashService.getLogin(number);
 
-		if (carWash.getPhoneNumber().equals(number) && carWash.getPassword().equals(password)) {
-			String fullname = carWash.getFullname();
-			// attrs.addFlashAttribute("number", number);
-			session.setAttribute("name", fullname);
-			session.setAttribute("logout", "Logout");
-			session.setAttribute("call", "show()");
-			session.setAttribute("icon", "<i class=\"fa-regular fa-user\"></i>");
-			session.setAttribute("number", number);
-			String num = (String) session.getAttribute("number");
-			this.number = num;
-			return "home";
+			if (carWash.getPhoneNumber().equals(number) && carWash.getPassword().equals(password)) {
+				String fullname = carWash.getFullname();
+				// attrs.addFlashAttribute("number", number);
+				session.setAttribute("name", fullname);
+				session.setAttribute("logout", "Logout <i class=\"fa-solid fa-arrow-right-from-bracket\"></i>");
+				session.setAttribute("call", "show()");
+				session.setAttribute("icon", "<i class=\"fa-regular fa-user\"></i>");
+				session.setAttribute("hide","none");
+				session.setAttribute("number", number);
+				String num = (String) session.getAttribute("number");
+				this.number = num;
+				return "home";
 
-		} else {
+			} else {
 
+				m.addAttribute("num", number);
+				m.addAttribute("pass", password);
+				m.addAttribute("valid", "valid()");
+				return "login";
+			}
+		} catch (EmptyResultDataAccessException e) {
 			m.addAttribute("num", number);
-			m.addAttribute("pass", password);
-			m.addAttribute("valid", "valid()");
+			m.addAttribute("showMsg","block");
+			m.addAttribute("numText", "Please enter a valid number !!");
 			return "login";
 		}
 
