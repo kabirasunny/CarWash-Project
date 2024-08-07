@@ -5,7 +5,7 @@ public class Booking {
 	private String phoneNumber;
 	private String waterWash;
 	private String farmWash;
-	private String voccumCleaner;
+	private String vocuumCleaner;
 	private String pollish;
 	private String airCleaner;
 	private String dateAndTime;
@@ -15,13 +15,13 @@ public class Booking {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Booking(String phoneNumber, String waterWash, String farmWash, String voccumCleaner, String pollish,
+	public Booking(String phoneNumber, String waterWash, String farmWash, String vocuumCleaner, String pollish,
 			String airCleaner, String dateAndTime) {
 		super();
 		this.phoneNumber = phoneNumber;
 		this.waterWash = waterWash;
 		this.farmWash = farmWash;
-		this.voccumCleaner = voccumCleaner;
+		this.vocuumCleaner = vocuumCleaner;
 		this.pollish = pollish;
 		this.airCleaner = airCleaner;
 		this.dateAndTime = dateAndTime;
@@ -51,12 +51,12 @@ public class Booking {
 		this.farmWash = farmWash;
 	}
 
-	public String getVoccumCleaner() {
-		return voccumCleaner;
+	public String getVocuumCleaner() {
+		return vocuumCleaner;
 	}
 
-	public void setVoccumCleaner(String voccumCleaner) {
-		this.voccumCleaner = voccumCleaner;
+	public void setVocuumCleaner(String voccumCleaner) {
+		this.vocuumCleaner = voccumCleaner;
 	}
 
 	public String getPollish() {
@@ -86,7 +86,7 @@ public class Booking {
 	@Override
 	public String toString() {
 		return "Booking [phoneNumber=" + phoneNumber + ", waterWash=" + waterWash + ", farmWash=" + farmWash
-				+ ", voccumCleaner=" + voccumCleaner + ", pollish=" + pollish + ", airCleaner=" + airCleaner
+				+ ", voccumCleaner=" + vocuumCleaner + ", pollish=" + pollish + ", airCleaner=" + airCleaner
 				+ ", dateAndTime=" + dateAndTime + "]";
 	}
 
