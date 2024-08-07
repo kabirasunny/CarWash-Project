@@ -18,6 +18,7 @@ public class SessionHelper {
 			session.removeAttribute("logout");
 			session.removeAttribute("call");
 			session.removeAttribute("icon");
+			session.removeAttribute("hide");
 
 		} catch (Exception e) {
 			e.printStackTrace();
