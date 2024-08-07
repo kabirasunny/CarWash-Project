@@ -17,7 +17,7 @@
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 :root {
@@ -31,6 +31,7 @@
 	--green-color: #c3fc68;
 	--dark-green-color: #4ba013;
 }
+
 
 .hidd {
 	visibility: hidden;
@@ -72,6 +73,9 @@ header .logo {
 }
 
 .success {
+    background-image:url("/resources/image/booking-bg.jpg");
+    background-size:cover;
+    background-repeat:no-repeat;
 	height: 85vh;
 }
 
@@ -102,7 +106,7 @@ header .logo {
 .success .container a {
 	text-decoration: none;
 	text-transform: uppercase;
-	background-color: var(--dark-green-color);
+	background-color: #1ca3e3;
 	color: var(--green-color);
 	padding: 10px 25px;
 	border-radius: 0.5rem;

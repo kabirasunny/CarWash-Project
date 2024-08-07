@@ -12,12 +12,13 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 	integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <style>
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 :root {
@@ -94,7 +95,7 @@ header nav ul #logout a {
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	background-color: var(--greysshade-color);
+	background-color:#fff;
 	width: 90%;
 	margin: auto;
 }
@@ -124,7 +125,7 @@ header nav ul #logout a {
 	color: var(--green-color);
 	text-decoration: none;
 	text-transform: uppercase;
-	background-color: var(--dark-green-color);
+	background-color: #1ca3e3;
 	padding: 10px 30px;
 	margin: 10px;
 	font-size: 15px;
@@ -181,7 +182,7 @@ footer .icons a {
 					<th>Phone Number</th>
 					<th>Water Wash</th>
 					<th>Farm Wash</th>
-					<th>Voccum Cleaner</th>
+					<th>Vocuum Cleaner</th>
 					<th>Pollish</th>
 					<th>Air Cleaner</th>
 					<th>Date And Time</th>
@@ -190,7 +191,7 @@ footer .icons a {
 					<td>${number }</td>
 					<td>${waterwash }</td>
 					<td>${farmwash }</td>
-					<td>${voccum }</td>
+					<td>${vocuum }</td>
 					<td>${pollish }</td>
 					<td>${aircleaner }</td>
 					<td>${dateandtime }</td>

@@ -13,12 +13,14 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 	integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <style>
+
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 :root {
@@ -69,7 +71,9 @@ header .logo {
 }
 
 .sectionForm {
-	
+	background-image:url("/resources/image/booking-bg.jpg");
+    background-size:cover;
+    background-repeat:no-repeat;
 	height: 90vh;
 	display: flex;
 	flex-direction: column;
@@ -79,6 +83,8 @@ header .logo {
 
 .sectionForm h3 {
 	font-size: 30px;
+	margin: 5px;
+	color: #fff;
 }
 
 .sectionForm form {
@@ -86,7 +92,7 @@ header .logo {
 	padding: 50px;
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: 12px;
 	background-color: var(--greysshade-color);
 	margin: 20px 0;
 }
@@ -95,10 +101,13 @@ header .logo {
 	font-size: 18px;
 	padding: 10px;
 	border-radius: 0.5rem;
+	border: 1px solid black;
 }
 
 .error {
 	color: red;
+	display: none;
+	margin: 0;
 }
 
 .sectionForm form .btn {
@@ -108,8 +117,8 @@ header .logo {
 	margin: auto;
 	padding: 10px;
 	border-radius: 0.3rem;
-	color: var(--green-color);
-	background-color: var(--dark-green-color);
+	color: #fff;
+	background-color: #1ca3e3;
 }
 
 .sectionForm form div {
@@ -173,12 +182,12 @@ footer .icons a {
 		<h3>Forgot Password</h3>
 		<form action="submitpassword" method="post"
 			onsubmit="return validation()">
-			<input type="tel" id="num" name="phoneNumber"
+			<input required type="tel" id="num" name="phoneNumber"
 				placeholder="Enter Your Number" value="${number }"> <input
 				type="password" class="psw" id="ps1" name="password"
 				placeholder="Set your password">
 			<p class="error passText"></p>
-			<input type="password" class="psw" id="ps2" name="secondPassword"
+			<input required type="password" class="psw" id="ps2" name="secondPassword"
 				placeholder="Re-enter password">
 			<p class="error passText"></p>
 			<button type="submit" class="btn">reset</button>
@@ -211,25 +220,32 @@ footer .icons a {
 			let ps2 = document.getElementById("ps2").value;
 			let psSecond = parseInt(ps2);
 			if (!psFirst) {
+				style.display="block";
 				passText = "Password can not be empty !!";
+				pass.style.display="block";
 				pass.innerHTML = passText;
 				return returnval = false;
 			} else {
 				if (psFirst > 100000 && psFirst < 999999999999) {
 					passText = "";
+					pass.style.display="none";
 					pass.innerHTML = passText;
 					if (psFirst === psSecond) {
 						passText = ""
+						pass.style.display="none";
 						pass.innerHTML = passText;
 						passSec.innerHTML = passText;
 						return returnval = true;
 					} else {
+						document.getElementsByClassName("passText")[1].style.display="block";
 						passText = "Your password does not match try again !!";
+						passSec.style.display="block";
 						passSec.innerHTML = passText;
 						return returnval = false;
 					}
 				} else {
 					passText = "Password must be between 6-12 digit only number!!";
+					pass.style.display="block";
 					pass.innerHTML = passText;
 					return returnval = false;
 				}

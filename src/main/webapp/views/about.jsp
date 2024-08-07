@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
+<style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         :root {
@@ -30,6 +30,7 @@
             --green-color: #c3fc68;
             --dark-green-color: #4ba013;
         }
+
 
         header {
             display: flex;
@@ -68,9 +69,12 @@
         }
 
         .about {
-            /* background-color: red; */
+            background-image:url("/resources/image/booking-bg.jpg");
+            background-size:cover;
+            background-repeat:no-repeat;
             height: 83vh;
             display: flex;
+            align-content: center;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -78,10 +82,10 @@
         .about div {
             margin: 15px 0;
             text-align: center;
-            background-color: #efefef;
-            width: 90%;
-            height: 80%;
-            padding: 50px;
+            background-color: #fff;
+            width: 45%;
+            height: 60%;
+            padding: 15px;
 
         }
 
@@ -89,13 +93,13 @@
             cursor: pointer;
             text-transform: uppercase;
             font-size: 30px;
-            color: rgb(172, 66, 66);
+            color: #000;
             margin-bottom: 10px;
         }
 
         .about div h2 {
             cursor: pointer;
-            color: rgb(172, 66, 66);
+            color: #000;
             margin-bottom: 10px;
         }
 
@@ -103,7 +107,7 @@
             cursor: pointer;
             /* text-transform: uppercase; */
             /* font-size: 30px; */
-            color: rgb(172, 66, 66);
+            color: #000;
         }
 
 

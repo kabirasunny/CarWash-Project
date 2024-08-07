@@ -14,12 +14,13 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 	integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
 <style>
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 :root {
@@ -33,6 +34,7 @@
 	--green-color: #c3fc68;
 	--dark-green-color: #4ba013;
 }
+
 
 .hidd {
 	visibility: hidden;
@@ -74,7 +76,9 @@ header .logo {
 }
 
 .sectionForm {
-	/* background-color: red; */
+	background-image:url("/resources/image/booking-bg.jpg");
+    background-size:cover;
+    background-repeat:no-repeat;
 	height: 90%;
 	display: flex;
 	flex-direction: column;
@@ -84,6 +88,8 @@ header .logo {
 
 .sectionForm h3 {
 	font-size: 30px;
+	color: #fff;
+	margin: 5px;
 }
 
 .sectionForm form {
@@ -91,8 +97,8 @@ header .logo {
 	padding: 50px;
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
-	background-color: var(--greysshade-color);
+	gap: 12px;
+	background-color: #fff;
 	margin: 20px 0;
 }
 
@@ -100,6 +106,7 @@ header .logo {
 	font-size: 18px;
 	padding: 10px;
 	border-radius: 0.5rem;
+	border: 1px solid black;
 }
 
 .sectionForm form .btn {
@@ -109,8 +116,8 @@ header .logo {
 	margin: auto;
 	padding: 10px;
 	border-radius: 0.3rem;
-	color: var(--green-color);
-	background-color: var(--dark-green-color);
+	color: #fff;
+	background-color: #1ca3e3;
 }
 
 .sectionForm form .btn:hover {
@@ -178,6 +185,8 @@ header .logo {
 
 .error {
 	color: red;
+	display: none;
+	margin: 0;
 }
 
 footer {
@@ -217,27 +226,28 @@ footer .icons a {
 
 	<section class="sectionForm" id="secForm">
 		<h3>Sign Up</h3>
-		<form action="register" method="post" novalidate="novalidate">
-			<input type="tel" name="phoneNumber" id="number"
-				placeholder="Enter Your Number">
-			<div class="error">
+		<form action="register" method="post" onsubmit="return validation()" novalidate="novalidate">
+			<input type="tel" required name="phoneNumber" id="numid"
+				placeholder="Enter Your Number" value="${number }">
+				<p id="numText" class="error" style="display:${ showMsg}">${numText }</p>
+			<%-- <div class="error">
 				<form:errors path="carWash.phoneNumber" />
-			</div>
-			<input type="email" name="email" id="email"
-				placeholder="Enter Your Email">
-			<div class="error">
+			</div> --%>
+			<input type="email" required name="email" id="emailid"
+				placeholder="Enter Your Email" value="${email }">
+				<p id="emailText" class="error"></p>
+			<%-- <div class="error">
 				<form:errors path="carWash.email" />
-			</div>
-			<input type="text" name="fullname" id="fullName"
-				placeholder="Enter Your Full Name">
-			<div class="error">
+			</div> --%>
+			<input type="text" required name="fullname" id="fullnameid"
+				placeholder="Enter Your Full Name" value="${name }">
+				 <p id="fullnameText" class="error"></p>
+			<%-- <div class="error">
 				<form:errors path="carWash.fullname" />
-			</div>
-			<input type="password" name="password" id="pass"
-				placeholder="Set Your Password">
-			<div class="error">
-				<form:errors path="carWash.password" />
-			</div>
+			</div> --%>
+			<input type="password" required name="password" id="passid"
+				placeholder="Set Your Password" value="${password }">
+			   <p id="passText" class="error"></p>
 			<button type="submit" class="btn" id="btn">Submit</button>
 		</form>
 
@@ -264,8 +274,80 @@ footer .icons a {
 		</div>
 	</footer>
 
-	<!-- 	<script>
-		let submit = document.getElementById("btn");
+ 	<script>
+ 	
+ 	function validation() {
+
+        let returnval = true;
+        let num = document.getElementById("numid").value;
+        let number = parseInt(num);
+        let email = document.getElementById("emailid").value;
+        let fullname = document.getElementById("fullnameid").value;
+        let pass = document.getElementById("passid").value;
+        let numText;
+        let emailText;
+        let fullnameText;
+        let passText;
+
+        if (number < 9999999999 && number > 1000000000) {
+            numText = "";
+            document.getElementById("numText").innerHTML = numText;
+            if (!email) {
+            	document.getElementById("numText").style.display="none";
+                document.getElementById("emailText").style.display="block";
+                emailText = "email can not be empty !!";
+                document.getElementById("emailText").innerHTML = emailText;
+                return returnval = false;
+
+            } else {
+            	document.getElementById("emailText").style.display="none";
+                emailText = "";
+                document.getElementById("emailText").innerHTML = emailText;
+                if (!fullname) {
+                	document.getElementById("fullnameText").style.display="block";
+                    fullnameText = "fullname can not be empty !!";
+                    document.getElementById("fullnameText").innerHTML = fullnameText;
+                    return returnval = false;
+
+                } else {
+                	document.getElementById("fullnameText").style.display="none";
+                    fullnameText = "";
+                    document.getElementById("fullnameText").innerHTML = fullnameText;
+                    if (!pass) {
+                    	document.getElementById("passText").style.display="block";
+                        passText = "password can not be empty !!";
+                        document.getElementById("passText").innerHTML = passText;
+                        return returnval = false;
+                    } else {
+                    	document.getElementById("passText").style.display="none";
+                        passText = "";
+                        document.getElementById("passText").innerHTML = passText;
+                        if (pass > 100000 && pass < 999999999999) {
+                        	document.getElementById("passText").style.display="none";
+                            passText = "";
+                            document.getElementById("passText").innerHTML = passText;
+                        } else {
+                        	document.getElementById("passText").style.display="block";
+                            passText = "password must be between 6-12 digit !!";
+                            document.getElementById("passText").innerHTML = passText;
+                            return returnval = false;
+                        }
+                        return returnval = true;
+                    }
+                    return returnval = true;
+                }
+
+            }
+            return returnval = true;
+
+        } else {
+        	document.getElementById("numText").style.display="block";
+            numText = "number must be 10 digit !!";
+            document.getElementById("numText").innerHTML = numText;
+            return returnval = false;
+        }
+    }
+/* 		let submit = document.getElementById("btn");
 		submit.onclick = function() {
 			openPopup()
 		};
@@ -285,8 +367,8 @@ footer .icons a {
 		function closePopup() {
 			popup.classList.remove("open-popup");
 			secForm.classList.remove("hidd");
-		}
-	</script> -->
+		} */
+	</script>
 
 </body>
 

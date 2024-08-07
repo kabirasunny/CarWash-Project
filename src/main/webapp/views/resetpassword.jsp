@@ -13,12 +13,13 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 	integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <style>
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 :root {
@@ -69,7 +70,9 @@ header .logo {
 }
 
 .sectionForm {
-	/* background-color: red; */
+    background-image:url("/resources/image/booking-bg.jpg");
+    background-size:cover;
+    background-repeat:no-repeat;
 	height: 90vh;
 	display: flex;
 	flex-direction: column;
@@ -79,6 +82,8 @@ header .logo {
 
 .sectionForm h3 {
 	font-size: 30px;
+	margin: 5px;
+	color: #fff;
 }
 
 .sectionForm form {
@@ -86,7 +91,7 @@ header .logo {
 	padding: 50px;
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: 12px;
 	background-color: var(--greysshade-color);
 	margin: 20px 0;
 }
@@ -95,10 +100,13 @@ header .logo {
 	font-size: 18px;
 	padding: 10px;
 	border-radius: 0.5rem;
+	border: 1px solid black;
 }
 
 .error {
 	color: red;
+	display: none;
+	margin: 0;
 }
 
 .sectionForm form .btn {
@@ -108,8 +116,8 @@ header .logo {
 	margin: auto;
 	padding: 10px;
 	border-radius: 0.3rem;
-	color: var(--green-color);
-	background-color: var(--dark-green-color);
+	color: #fff;
+	background-color: #1ca3e3;
 }
 
 .sectionForm form div {
@@ -181,8 +189,8 @@ footer .icons a {
 		<h3>Forgot Password</h3>
 		<form action="reset" method="post" onsubmit="return validation()">
 			<input type="tel" id="num" name="phoneNumber"
-				placeholder="Enter Your Number" value="">
-			<p class="error" id="numText"></p>
+				placeholder="Enter Your Number" value="${number }">
+			<p class="error" style="display:${ showMsg}" id="numText">${numText }</p>
 			<button type="submit" class="btn">reset</button>
 			<hr>
 			<div>
@@ -209,14 +217,17 @@ footer .icons a {
         let nm = document.getElementById("num").value;
         let num = parseInt(nm);
         if (num < 9999999999 && num > 1000000000) {
+        	 document.getElementById("numText").style.display="none";
             numText = "";
         } else if (!num) {
+        	 document.getElementById("numText").style.display="block";
             numText = "Phone Number can not be empty !!"
             document.getElementById("numText").innerHTML = numText;
             return returnval = false;
         }
 
         else {
+        	 document.getElementById("numText").style.display="block";
             numText = "Phone Number must be 10 digit !!"
             document.getElementById("numText").innerHTML = numText;
             return returnval=false;

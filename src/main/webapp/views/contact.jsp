@@ -13,12 +13,17 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 	integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+	rel="stylesheet">
 <style>
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 :root {
@@ -32,6 +37,13 @@
 	--green-color: #c3fc68;
 	--dark-green-color: #4ba013;
 }
+
+body{
+    background-image:url("/resources/image/booking-bg.jpg");
+    background-size:cover;
+    background-repeat:no-repeat;
+    }
+
 
 header {
 	display: flex;
@@ -77,7 +89,6 @@ header nav ul #logout a {
 }
 
 .location {
-	/* background-color: red; */
 	height: 90%;
 	display: flex;
 	justify-content: center;
@@ -87,7 +98,7 @@ header nav ul #logout a {
 .location div {
 	margin: 15px 0;
 	text-align: center;
-	background-color: #efefef;
+	background:#fff;
 	width: 90%;
 	height: 30%;
 	padding: 50px;
@@ -97,7 +108,7 @@ header nav ul #logout a {
 	cursor: pointer;
 	text-transform: uppercase;
 	font-size: 30px;
-	color: rgb(172, 66, 66);
+	color: #000;
 	margin-bottom: 10px;
 }
 
@@ -105,18 +116,17 @@ header nav ul #logout a {
 	cursor: pointer;
 	text-transform: uppercase;
 	/* font-size: 30px; */
-	color: rgb(172, 66, 66);
+	color: #000;
 }
 
 .contactForm {
-	/* background-color: green; */
 	height: 100%;
 	margin: 10px 0;
 }
 
 .contactForm div {
 	padding: 20px 0;
-	background-color: #efefef;
+	background:#fff;
 	width: 90%;
 	margin: auto;
 }
@@ -132,32 +142,32 @@ header nav ul #logout a {
 .contactForm div form h2 {
 	text-transform: uppercase;
 	font-weight: 100;
-	color: rgb(172, 66, 66);;
+	color: #000;
 }
 
 .contactForm div form input {
 	padding: 10px;
 	border-radius: 0.5rem;
-	border: none;
+	border: 1px solid black;
 }
 
 .contactForm div form textarea {
 	padding: 10px;
 	border-radius: 0.5rem;
-	border: none;
+	border: 1px solid black;
 }
 
 .contactForm div form button {
 	width: 100px;
 	padding: 8px;
 	border-radius: 0.5rem;
-	/* border: none; */
+	border: 1px solid black;
 	cursor: pointer;
 }
 
 .contactForm div form button:hover {
 	color: var(--white-color);
-	background-color: var(--dark-green-color);
+	background-color: #1ca3e3;
 	transition: background 1s ease;
 }
 

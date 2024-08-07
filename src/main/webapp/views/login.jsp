@@ -16,7 +16,7 @@
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 :root {
@@ -30,6 +30,7 @@
 	--green-color: #c3fc68;
 	--dark-green-color: #4ba013;
 }
+
 
 header {
 	display: flex;
@@ -67,7 +68,9 @@ header .logo {
 }
 
 .sectionForm {
-	/* background-color: red; */
+	background-image:url("/resources/image/booking-bg.jpg");
+    background-size:cover;
+    background-repeat:no-repeat;
 	height: 90vh;
 	display: flex;
 	flex-direction: column;
@@ -77,6 +80,8 @@ header .logo {
 
 .sectionForm h3 {
 	font-size: 30px;
+	color: #fff;
+	margin: 5px;
 }
 
 .sectionForm form {
@@ -84,7 +89,7 @@ header .logo {
 	padding: 50px;
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: 12px;
 	background-color: var(--greysshade-color);
 	margin: 20px 0;
 }
@@ -93,10 +98,14 @@ header .logo {
 	font-size: 18px;
 	padding: 10px;
 	border-radius: 0.5rem;
+	border: 1px solid black;
+	
 }
 
 .error {
 	color: red;
+	display: none;
+	margin: 0;
 }
 
 .sectionForm form .btn {
@@ -106,8 +115,8 @@ header .logo {
 	margin: auto;
 	padding: 10px;
 	border-radius: 0.3rem;
-	color: var(--green-color);
-	background-color: var(--dark-green-color);
+	color: #fff;
+	background-color: #1ca3e3;
 }
 
 .sectionForm form div {
@@ -166,17 +175,17 @@ footer .icons a {
 	<section class="sectionForm">
 		<h3>Welcome Login</h3>
 		<form action="loginuser" method="post" onsubmit="return validation()">
-			<input type="tel" name="phoneNumber" id="num"
+			<input type="tel" required name="phoneNumber" id="num"
 				placeholder="Enter Your Number" value="${num }">
-			<p id="numText" class="error"></p>
-			<input type="password" id="pass" name="password"
+			<p id="numText" style="display:${ showMsg}" class="error">${numText }</p>
+			<input type="password" required id="pass" name="password"
 				placeholder="Enter Your Password" value="${pass }">
 			<p id="passText" class="error"></p>
-			<button type="submit" id="btn" class="btn">Login</button>
+			<button type="submit" id="btn" class="btn"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
 			<hr>
 			<div>
 				<a href="resetpassword" class="forgotSignup">Forgot password ?</a> <a
-					href="signup" class="forgotSignup">Sign up</a>
+					href="signup" class="forgotSignup"> Sign up</a>
 			</div>
 		</form>
 	</section>
@@ -195,18 +204,18 @@ footer .icons a {
 	 function validation() {
          let returnval = true;
          let num = document.getElementById("num").value;
-         let pas = document.getElementById("pass").value;
-         let pass = parseInt(pas)
-         console.log(num);
-         console.log(pass);
+         let pass = document.getElementById("pass").value;
          let numText;
          let passText;
          if (!num) {
+        	 document.getElementById("numText").style.display="block";
              numText = "Phone Number can not be empty !!";
              if (!pass) {
+            	 document.getElementById("passText").style.display="block";
                  passText = "Password can not be empty !!";
              }
              else {
+            	 document.getElementById("passText").style.display="block";
                  passText = "Password in incorrect !!"
              }
              document.getElementById("numText").innerHTML = numText;
@@ -215,16 +224,20 @@ footer .icons a {
          }
          else {
              if (num < 9999999999 && num > 1000000000) {
+            	 document.getElementById("numText").style.display="none";
                  numText = ""
                  document.getElementById("numText").innerHTML = numText;
                  if (!pass) {
+                	 document.getElementById("passText").style.display="block";
                      passText = "Password can not be empty !!";
                      document.getElementById("passText").innerHTML = passText;
                      return returnval = false;
                  } else {
                      if (pass > 100000 && pass < 999999999999) {
+                    	 document.getElementById("passText").style.display="none";
                          passText = "";
                      } else {
+                    	 document.getElementById("passText").style.display="block";
                     	 passText = "Password must be between 6-12 digit only number!!";
                          document.getElementById("passText").innerHTML = passText;
                          return returnval = false;
@@ -235,14 +248,18 @@ footer .icons a {
              else {
 
                  if (!pass) {
+                	 document.getElementById("passText").style.display="block";
                      passText = "Password can not be empty !!";
                  } else {
                      if (pass > 100000 && pass < 999999999999) {
+                    	 document.getElementById("passText").style.display="none";
                          passText = ""
                      } else {
+                    	 document.getElementById("passText").style.display="block";
                     	 passText = "Password must be between 6-12 digit only number!!";
                      }
                  }
+                 document.getElementById("numText").style.display="block";
                  numText = "Phone Number must be 10 digit !!"
                  document.getElementById("numText").innerHTML = numText;
                  document.getElementById("passText").innerHTML = passText;

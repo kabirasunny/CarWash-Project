@@ -14,11 +14,11 @@
 	integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
+
 * {
 	box-sizing: border-box;
 	margin: 0;
-	padding: 0;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	padding: 0;font-family: Arial, Helvetica, sans-serif;
 }
 
 :root {
@@ -87,83 +87,116 @@ header nav ul #logout a {
 	color: red;
 }
 
-.cards .cardDetail {
+.sectionFive {
+ background-image:url("/resources/image/booking-bg.jpg");
+ background-size:cover;
+ background-repeat:no-repeat;
+}
+
+
+.sectionFive .divCards {
+	padding: 15px 0;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	gap: 20px;
+	/* height: 80vh; */
 	width: 90%;
-	background-color: var(--greysshade-color);
-	/* background-color: green; */
 	margin: auto;
-	padding: 10px 0;
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
 }
 
-.cards .cardDetail .card img {
-	display: flex;
-	width: 50%;
-	height: 75vh;
-	border-radius: 1rem;
+.sectionFive .headTitle {
+	text-align: center;
+	font-size: 50px;
+	font-weight: 500;
+	margin: 10px 0;
 	cursor: pointer;
 }
 
-.cards .cardDetail .detail {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-}
-
-.cards .cardDetail .detail h1 {
-	font-size: 30px;
-	color: var(--dark-color);
+.sectionFive .divCards .card {
+	width: 300px;
+	height: 100%;
+	border: 1px solid black;
+	padding: 15px;
 	cursor: pointer;
+	background-color: var(--white-color);
+	/* overflow-y: scroll; */
 }
 
-.cards .cardDetail .detail ul li {
+.sectionFive .divCards .card h3 {
 	font-size: 25px;
-	font-weight: 600;
+	font-weight: 500;
 	margin: 15px 0;
-	color: var(--dark-color);
-	cursor: pointer;
 }
 
-.cards .cardDetail .detail .btn {
+.sectionFive .divCards .card p {
+	margin: 10px 0;
+}
+
+.sectionFive .divCards .card span {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.sectionFive .divCards .card ul {
+	list-style: none;
+}
+
+.sectionFive .divCards .card ul .listHead {
+	font-weight: 600;
+}
+
+.sectionFive .divCards .card ul li {
+	padding-bottom: 5px;
+	margin: 10px 0;
+	border-bottom: 1px solid gray;
+}
+
+.sectionFive .divCards .card ul li i {
+	color: #1ca3e3;
+}
+
+.sectionFive .divCards .card ul li .fa-circle-xmark {
+    color: red;
+}
+
+.sectionFive .divCards .card .btn {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	gap: 10px;
 }
 
-.cards .cardDetail .detail .btn a {
-	color: var(--green-color);
+.sectionFive .divCards .card .btn a {
+	color: var(--white-color);
 	text-decoration: none;
 	text-transform: uppercase;
-	background-color: var(--dark-green-color);
-	padding: 10px 30px;
+	background-color: #1ca3e3;
+	padding: 10px 20px;
 	/* margin: 10px; */
-	font-size: 15px;
+	font-size: 10px;
 	border-radius: 0.5rem;
 }
 
-.cards .cardDetail .detail .btn form .b {
-	color: var(--green-color);
+.sectionFive .divCards .card .btn form .b {
+	color: var(--white-color);
+	text-decoration: none;
 	text-transform: uppercase;
-	background-color: var(--dark-green-color);
-	padding: 10px 30px;
-	font-size: 15px;
+	background-color: #1ca3e3;
+	padding: 10px 20px;
+	/* margin: 10px; */
+	font-size: 10px;
 	border-radius: 0.5rem;
-	border: 0;
-	cursor: pointer;
 }
 
-.cards .cardDetail .detail .btn a:hover {
+.sectionFive .divCards .card .btn a:hover {
 	color: var(--white-color);
 	background-color: var(--black-color);
 	transition: background 1s ease;
 }
 
-.cards .cardDetail .detail .btn form .b:hover {
+.sectionFive .divCards .card .btn form .b:hover {
 	color: var(--white-color);
 	background-color: var(--black-color);
 	transition: background 1s ease;
@@ -262,34 +295,33 @@ footer .icons a {
 		</nav>
 	</header>
 
-	<section class="cards" id="cardSec">
-		<div class="cardDetail">
+	<section class="sectionFive" id="cardSec">
+		<div class="divCards">
 			<div class="card">
-				<img src='<c:url value="/resources/image/carcard-2.jpg"></c:url>'
-					alt="">
-			</div>
-			<div class="detail">
-				<h1>
-					Medium Wash:<i class="fa-solid fa-indian-rupee-sign">300</i>
-				</h1>
+				<h3>Deluxe Detailing</h3>
+				<p>A deluxe detailing washing water and drying with vocuum cleaning and farm wash</p>
+				<span><i class="fa-solid fa-indian-rupee-sign"> 300</i></span>
+				<p>Duration: 30 Minutes</p>
 				<ul>
-					<li>Water Wash</li>
-					<li>Vocuum Cleaner</li>
-					<li>Farm Wash</li>
-					<li>No Pollish</li>
-					<li>No Air Cleaner</li>
+					<li class="listHead">Whats Included:</li>
+					<li><i class="fa-regular fa-circle-check"></i> Exterior hand
+						wash and drying</li>
+					<li><i class="fa-regular fa-circle-check"></i> Vocuum Cleaning</li>
+					<li><i class="fa-regular fa-circle-check"></i> Farm Wash</li>
+					<li><i class="fa-regular fa-circle-xmark"></i> No Pollish Cleaning</li>
+					<li><i class="fa-regular fa-circle-xmark"></i>  No Air Cleaning</li>
 				</ul>
+
 				<div class="btn">
 					<!-- <a href="">Confirm</a> -->
 					<form action="medium">
 						<button type="submit" class="b" id="btn">Confirm</button>
 					</form>
-					<a href="cardetail2">Show Booking</a>
+					<a href="cardetail">Show Booking</a>
 				</div>
 			</div>
 		</div>
 
-		</div>
 	</section>
 
 	<section class="container" id="popup">

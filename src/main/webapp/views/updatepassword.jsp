@@ -12,13 +12,12 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 	integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 <style>
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 :root {
@@ -73,6 +72,9 @@ header .logo {
 }
 
 .success {
+    background-image:url("/resources/image/booking-bg.jpg");
+    background-size:cover;
+    background-repeat:no-repeat;
 	height: 85vh;
 }
 
@@ -84,7 +86,7 @@ header .logo {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: var(--greysshade-color);
+	background-color: #fff;
 	width: 90%;
 	margin: auto;
 }
@@ -103,7 +105,7 @@ header .logo {
 .success .container a {
 	text-decoration: none;
 	text-transform: uppercase;
-	background-color: var(--dark-green-color);
+	background-color: #1ca3e3;
 	color: var(--green-color);
 	padding: 10px 25px;
 	border-radius: 0.5rem;
