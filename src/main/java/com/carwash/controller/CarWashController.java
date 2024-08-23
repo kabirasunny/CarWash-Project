@@ -118,6 +118,7 @@ public class CarWashController {
 				session.setAttribute("icon", "<i class=\"fa-regular fa-user\"></i>");
 				session.setAttribute("hide", "none");
 				session.setAttribute("number", number);
+				session.setAttribute("fmContactVisible", "visible");
 				String num = (String) session.getAttribute("number");
 				this.number = num;
 				return "home";

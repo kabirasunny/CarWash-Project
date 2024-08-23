@@ -19,6 +19,7 @@ public class SessionHelper {
 			session.removeAttribute("call");
 			session.removeAttribute("icon");
 			session.removeAttribute("hide");
+			session.removeAttribute("fmContactVisible");
 
 		} catch (Exception e) {
 			e.printStackTrace();
