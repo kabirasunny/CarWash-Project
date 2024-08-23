@@ -82,6 +82,7 @@ header .logo {
 
 header nav ul #navName {
 	color: #CCFF90;
+	text-transform: uppercase;
 }
 
 header nav ul #logout a {
@@ -120,6 +121,7 @@ header nav ul #logout a {
 }
 
 .contactForm {
+    visibility: hidden;
 	height: 100%;
 	margin: 10px 0;
 }
@@ -172,6 +174,7 @@ header nav ul #logout a {
 }
 
 .container {
+    
 	position: absolute;
 	top: 0;
 	left: 50%;
@@ -219,8 +222,8 @@ header nav ul #logout a {
 	width: 100%;
 	margin-top: 15px;
 	padding: 10px 0;
-	background-color: var(--dark-green-color);
-	color: var(--green-color);
+	background-color: #1ca3e3;
+	color: #fff;
 	border: 0;
 	outline: none;
 	font-size: 18px;
@@ -255,7 +258,7 @@ footer .icons a {
 		<div class="logo">CW</div>
 		<nav>
 			<ul>
-				<li id="navName"><span>${icon }</span>${name }</li>
+				<li id="navName"><span>${icon }</span> ${name }</li>
 				<li id="logout"><a href="logout">${logout }</a></li>
 				<li><a href="home">Home</a></li>
 				<li><a href="about">About</a></li>
@@ -274,7 +277,7 @@ footer .icons a {
 		</div>
 	</section>
 
-	<section class="contactForm">
+	<section class="contactForm" style="visibility: ${fmContactVisible };">>
 		<div>
 			<form action="feedback" method="post">
 				<h2>Feedback</h2>
@@ -306,7 +309,7 @@ footer .icons a {
 				class="fa-brands fa-square-facebook"></i></a>
 		</div>
 	</footer>
-	<!-- 	<script>
+	<script>
 		let confirm = document.getElementById("btn");
 		confirm.onclick = function() {
 			openPopup()
@@ -328,7 +331,7 @@ footer .icons a {
 			popup.classList.remove("open-popup");
 			cardSec.classList.remove("hidd");
 		}
-	</script> -->
+	</script>
 </body>
 
 </html>
