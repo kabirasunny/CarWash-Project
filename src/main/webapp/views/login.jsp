@@ -108,6 +108,15 @@ header .logo {
 	margin: 0;
 }
 
+.error2 {
+	color: red;
+	display: block;
+	margin: 0;
+}
+
+
+
+
 .sectionForm form .btn {
 	cursor: pointer;
 	text-transform: uppercase;
@@ -181,6 +190,7 @@ footer .icons a {
 			<input type="password" required id="pass" name="password"
 				placeholder="Enter Your Password" value="${pass }">
 			<p id="passText" class="error"></p>
+			<p  class="error2" style="display:'none'">${passMsg }</p>
 			<button type="submit" id="btn" class="btn"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
 			<hr>
 			<div>
@@ -209,14 +219,14 @@ footer .icons a {
          let passText;
          if (!num) {
         	 document.getElementById("numText").style.display="block";
-             numText = "Phone Number can not be empty !!";
+             numText = "number can not be empty !!";
              if (!pass) {
             	 document.getElementById("passText").style.display="block";
-                 passText = "Password can not be empty !!";
+                 passText = "password can not be empty !!";
              }
              else {
             	 document.getElementById("passText").style.display="block";
-                 passText = "Password in incorrect !!"
+                 passText = "password in incorrect !!"
              }
              document.getElementById("numText").innerHTML = numText;
              document.getElementById("passText").innerHTML = passText;
@@ -229,7 +239,7 @@ footer .icons a {
                  document.getElementById("numText").innerHTML = numText;
                  if (!pass) {
                 	 document.getElementById("passText").style.display="block";
-                     passText = "Password can not be empty !!";
+                     passText = "password can not be empty !!";
                      document.getElementById("passText").innerHTML = passText;
                      return returnval = false;
                  } else {
@@ -238,7 +248,7 @@ footer .icons a {
                          passText = "";
                      } else {
                     	 document.getElementById("passText").style.display="block";
-                    	 passText = "Password must be between 6-12 digit only number!!";
+                    	 passText = "password must be between 6-12 digit only number!!";
                          document.getElementById("passText").innerHTML = passText;
                          return returnval = false;
                      }
@@ -249,18 +259,19 @@ footer .icons a {
 
                  if (!pass) {
                 	 document.getElementById("passText").style.display="block";
-                     passText = "Password can not be empty !!";
+                     passText = "password can not be empty !!";
                  } else {
                      if (pass > 100000 && pass < 999999999999) {
                     	 document.getElementById("passText").style.display="none";
                          passText = ""
                      } else {
                     	 document.getElementById("passText").style.display="block";
-                    	 passText = "Password must be between 6-12 digit only number!!";
+                    	 passText = "password must be between 6-12 digit only number!!";
                      }
                  }
+                   
                  document.getElementById("numText").style.display="block";
-                 numText = "Phone Number must be 10 digit !!"
+                 numText = "number must be 10 digit !!"
                  document.getElementById("numText").innerHTML = numText;
                  document.getElementById("passText").innerHTML = passText;
                  return returnval = false;

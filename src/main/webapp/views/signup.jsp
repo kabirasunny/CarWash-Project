@@ -14,7 +14,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 	integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
-	
+
 <style>
 * {
 	box-sizing: border-box;
@@ -34,7 +34,6 @@
 	--green-color: #c3fc68;
 	--dark-green-color: #4ba013;
 }
-
 
 .hidd {
 	visibility: hidden;
@@ -76,9 +75,9 @@ header .logo {
 }
 
 .sectionForm {
-	background-image:url("/resources/image/booking-bg.jpg");
-    background-size:cover;
-    background-repeat:no-repeat;
+	background-image: url("/resources/image/booking-bg.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
 	height: 90%;
 	display: flex;
 	flex-direction: column;
@@ -226,28 +225,29 @@ footer .icons a {
 
 	<section class="sectionForm" id="secForm">
 		<h3>Sign Up</h3>
-		<form action="register" method="post" onsubmit="return validation()" novalidate="novalidate">
+		<form action="register" method="post" onsubmit="return validation()"
+			novalidate="novalidate">
 			<input type="tel" required name="phoneNumber" id="numid"
 				placeholder="Enter Your Number" value="${number }">
-				<p id="numText" class="error" style="display:${ showMsg}">${numText }</p>
+			<p id="numText" class="error" style="display:${ showMsg}">${numText }</p>
 			<%-- <div class="error">
 				<form:errors path="carWash.phoneNumber" />
 			</div> --%>
 			<input type="email" required name="email" id="emailid"
 				placeholder="Enter Your Email" value="${email }">
-				<p id="emailText" class="error"></p>
+			<p id="emailText" class="error"></p>
 			<%-- <div class="error">
 				<form:errors path="carWash.email" />
 			</div> --%>
 			<input type="text" required name="fullname" id="fullnameid"
 				placeholder="Enter Your Full Name" value="${name }">
-				 <p id="fullnameText" class="error"></p>
+			<p id="fullnameText" class="error"></p>
 			<%-- <div class="error">
 				<form:errors path="carWash.fullname" />
 			</div> --%>
 			<input type="password" required name="password" id="passid"
 				placeholder="Set Your Password" value="${password }">
-			   <p id="passText" class="error"></p>
+			<p id="passText" class="error"></p>
 			<button type="submit" class="btn" id="btn">Submit</button>
 		</form>
 
@@ -274,7 +274,7 @@ footer .icons a {
 		</div>
 	</footer>
 
- 	<script>
+	<script>
  	
  	function validation() {
 
@@ -341,10 +341,18 @@ footer .icons a {
             return returnval = true;
 
         } else {
-        	document.getElementById("numText").style.display="block";
-            numText = "number must be 10 digit !!";
-            document.getElementById("numText").innerHTML = numText;
-            return returnval = false;
+        	if(number){
+        		document.getElementById("numText").style.display="block";
+                numText = "number must be 10 digit !!";
+                document.getElementById("numText").innerHTML = numText;
+                return returnval = false;
+        	}else{
+        		document.getElementById("numText").style.display="block";
+                numText = "character is not valid !!";
+                document.getElementById("numText").innerHTML = numText;
+                return returnval = false;
+        	}
+        
         }
     }
 /* 		let submit = document.getElementById("btn");

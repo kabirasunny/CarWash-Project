@@ -221,14 +221,14 @@ footer .icons a {
             numText = "";
         } else if (!num) {
         	 document.getElementById("numText").style.display="block";
-            numText = "Phone Number can not be empty !!"
+            numText = "character is not valid !!"
             document.getElementById("numText").innerHTML = numText;
             return returnval = false;
         }
 
         else {
         	 document.getElementById("numText").style.display="block";
-            numText = "Phone Number must be 10 digit !!"
+            numText = "number must be 10 digit !!"
             document.getElementById("numText").innerHTML = numText;
             return returnval=false;
         }

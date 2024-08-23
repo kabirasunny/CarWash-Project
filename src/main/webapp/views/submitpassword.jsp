@@ -221,7 +221,7 @@ footer .icons a {
 			let psSecond = parseInt(ps2);
 			if (!psFirst) {
 				style.display="block";
-				passText = "Password can not be empty !!";
+				passText = "password can not be empty !!";
 				pass.style.display="block";
 				pass.innerHTML = passText;
 				return returnval = false;
@@ -238,13 +238,13 @@ footer .icons a {
 						return returnval = true;
 					} else {
 						document.getElementsByClassName("passText")[1].style.display="block";
-						passText = "Your password does not match try again !!";
+						passText = "password does not match try again !!";
 						passSec.style.display="block";
 						passSec.innerHTML = passText;
 						return returnval = false;
 					}
 				} else {
-					passText = "Password must be between 6-12 digit only number!!";
+					passText = "password must be between 6-12 digit only number!!";
 					pass.style.display="block";
 					pass.innerHTML = passText;
 					return returnval = false;

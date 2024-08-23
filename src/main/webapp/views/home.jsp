@@ -75,6 +75,7 @@ header .logo {
 
 header nav ul #navName {
 	color: #CCFF90;
+	text-transform: uppercase;
 }
 
 header nav ul #logout a {

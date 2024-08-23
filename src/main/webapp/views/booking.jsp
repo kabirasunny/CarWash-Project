@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page isELIgnored="false"%>
@@ -165,7 +166,7 @@ footer .icons a {
 		<div class="logo">CW</div>
 		<nav>
 			<ul>
-				<li id="navName">${name }</li>
+				<li id="navName"><span>${icon }</span> ${name }</li>
 				<li id="logout"><a href="logout">${logout }</a>
 				<li><a href="home">Home</a></li>
 				<li><a href="about">About</a></li>
