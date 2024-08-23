@@ -69,38 +69,31 @@ public class CarWashController {
 		return "contact";
 	}
 
-	// yaha logic dena hoga for popup
 
 	@PostMapping(path = "/register")
-	public String getRegister(@Valid @ModelAttribute("carWash") CarWash carWash, BindingResult result, Model m,
+	public String getRegister(@ModelAttribute("carWash") CarWash carWash, Model m,
 			HttpSession session) {
 
 		try {
-			if (result.hasErrors()) {
+
+			carWash.getPhoneNumber();
+			carWash.getEmail();
+			carWash.getFullname();
+			carWash.getPassword();
+			int r = carWashDao.getRegister(carWash);
+			if (r == 1) {
+				return "success";
+			} else {
 				return "signup";
-
 			}
 
-			else {
-				carWash.getPhoneNumber();
-				carWash.getEmail();
-				carWash.getFullname();
-				carWash.getPassword();
-				int r = carWashDao.getRegister(carWash);
-				if (r == 1) {
-					return "success";
-				} else {
-					return "signup";
-				}
-
-			}
 		} catch (DuplicateKeyException e) {
-			m.addAttribute("number",carWash.getPhoneNumber());
-			m.addAttribute("showMsg","block");
+			m.addAttribute("number", carWash.getPhoneNumber());
+			m.addAttribute("showMsg", "block");
 			m.addAttribute("numText", "Phone number is already registerd !!");
-			m.addAttribute("email",carWash.getEmail());
-			m.addAttribute("name",carWash.getFullname());
-			m.addAttribute("password",carWash.getPassword());
+			m.addAttribute("email", carWash.getEmail());
+			m.addAttribute("name", carWash.getFullname());
+			m.addAttribute("password", carWash.getPassword());
 			return "signup";
 		}
 	}
@@ -123,7 +116,7 @@ public class CarWashController {
 				session.setAttribute("logout", "Logout <i class=\"fa-solid fa-arrow-right-from-bracket\"></i>");
 				session.setAttribute("call", "show()");
 				session.setAttribute("icon", "<i class=\"fa-regular fa-user\"></i>");
-				session.setAttribute("hide","none");
+				session.setAttribute("hide", "none");
 				session.setAttribute("number", number);
 				String num = (String) session.getAttribute("number");
 				this.number = num;
@@ -133,13 +126,15 @@ public class CarWashController {
 
 				m.addAttribute("num", number);
 				m.addAttribute("pass", password);
+				m.addAttribute("passMsg", "password is incorrect !!");
+				m.addAttribute("passBlock", "block");
 				m.addAttribute("valid", "valid()");
 				return "login";
 			}
 		} catch (EmptyResultDataAccessException e) {
 			m.addAttribute("num", number);
-			m.addAttribute("showMsg","block");
-			m.addAttribute("numText", "Please enter a valid number !!");
+			m.addAttribute("showMsg", "block");
+			m.addAttribute("numText", "please enter a valid number !!");
 			return "login";
 		}
 
@@ -229,24 +224,24 @@ public class CarWashController {
 
 	@GetMapping("/cardetail")
 	public String getNormal(Model m) {
-		m.addAttribute("wash", "Normal Booking");
+		m.addAttribute("wash", "Normal Latest Booking");
 		String number = this.number;
 		List<Booking> list = this.carWashService.getBooking(number);
 		for (Booking b : list) {
-				m.addAttribute("number", b.getPhoneNumber());
-				m.addAttribute("waterwash", b.getWaterWash());
-				m.addAttribute("farmwash", b.getFarmWash());
-				m.addAttribute("vocuum", b.getVocuumCleaner());
-				m.addAttribute("pollish", b.getPollish());
-				m.addAttribute("aircleaner", b.getAirCleaner());
-				m.addAttribute("dateandtime", b.getDateAndTime());
+			m.addAttribute("number", b.getPhoneNumber());
+			m.addAttribute("waterwash", b.getWaterWash());
+			m.addAttribute("farmwash", b.getFarmWash());
+			m.addAttribute("vocuum", b.getVocuumCleaner());
+			m.addAttribute("pollish", b.getPollish());
+			m.addAttribute("aircleaner", b.getAirCleaner());
+			m.addAttribute("dateandtime", b.getDateAndTime());
 		}
 		return "booking";
 	}
 
 	@GetMapping("/cardetail2")
 	public String getMedium(Model m) {
-		m.addAttribute("wash", "Medium Booking");
+		m.addAttribute("wash", "Medium Latest Booking ");
 		String number = this.number;
 		List<Booking> list = this.carWashService.getBooking(number);
 		for (Booking b : list) {
@@ -263,7 +258,7 @@ public class CarWashController {
 
 	@GetMapping("/cardetail3")
 	public String getPremium(Model m) {
-		m.addAttribute("wash", "Premium Booking");
+		m.addAttribute("wash", "Premium Latest Booking ");
 		String number = this.number;
 		List<Booking> list = this.carWashService.getBooking(number);
 		for (Booking b : list) {
@@ -306,7 +301,7 @@ public class CarWashController {
 			}
 		} catch (EmptyResultDataAccessException e) {
 			m.addAttribute("number", number);
-			m.addAttribute("showMsg","block");
+			m.addAttribute("showMsg", "block");
 			m.addAttribute("numText", "Please enter a valid number !!");
 			return "resetpassword";
 		}
